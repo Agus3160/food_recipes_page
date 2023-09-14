@@ -1,11 +1,17 @@
 
-let hitList = []
+let recipeList = []
 
 const btnSearch = document.getElementById('searchButton')
 btnSearch.onclick = fnSearchRecipes
 
 const btnFilter = document.getElementById('filter-button')
 btnFilter.onclick = fnSearchRecipes
+
+const inputCaloriesFrom = document.getElementById('from-calories')
+inputCaloriesFrom.onkeydown = function (e){if(e.key == '-') e.preventDefault()}
+
+const inputCaloriesTo = document.getElementById('to-calories')
+inputCaloriesTo.onkeydown = function (e){if(e.key == '-') e.preventDefault()}
 
 const inputTextSearch = document.getElementById('searchText')
 inputTextSearch.addEventListener('keypress', (e) => {
@@ -17,12 +23,11 @@ window.onload = () => {
 }
 
 class RecipeCard{
-    constructor(title, url, image,calories, ingredients){
+    constructor(title, url, image, summary){
         this.title = title
         this.url = url
         this.image = image
-        this.calories = calories
-        this.ingredients = ingredients
+        this.summary = summary
     }
 
     getHtmlCard(){
@@ -36,8 +41,7 @@ class RecipeCard{
             `<img src='${this.image}' class="recipeImg"/>
             <h2 class="tituloReceta">${this.title}</h2>
             <div class='recipeSummary'>
-                <p class='recipeCalories'>Calories: <span>${this.calories}</span></p>
-                <p>Ingredients: <span>${this.ingredients}</span></p>
+                <p class='recipeCalories'>${this.summary.replace(/<\/?[^>]+(>|$)/g, "")}</p>
             </div>`
         )
 
@@ -50,16 +54,19 @@ class RecipeCard{
 }
 
 function fnGetRandomRecipe(query, params){    
-
+    const API_KEY = '008838f4b5fd428e9ed897a54bc64617'
     fnRecipesContaineRefresh()
 
     let paramQuery = ''
 
     if(query.length > 0){
-        paramQuery += `&q=${query}`
+        paramQuery += `&query=${query}`
+    }else{
+
     }
     
-    let url = `https://api.edamam.com/api/recipes/v2?type=public&app_id=4b39cecb&app_key=%20edb64012675c4c34c91c6546d35f285a${paramQuery}${params}`
+    let url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}${paramQuery}${params}&addRecipeInformation=true&fillIngredients=true&number=3`
+    
 
     fetch(url, {
         method: 'GET',
@@ -70,8 +77,8 @@ function fnGetRandomRecipe(query, params){
         res => res.json()
     ).then(
         data => {
-            hitList = data.hits
-            fnLoadRecipeCard(hitList)
+            recipeList = data.results
+            fnLoadRecipeCard(recipeList)
         }
     )
 }
@@ -80,8 +87,8 @@ function fnLoadRecipeCard(rArray){
     let cardTemp = {}
     let recipesContainer = document.getElementById('recipesContainer')
 
-    rArray.forEach(hit => {
-        cardTemp = new RecipeCard(hit.recipe.label, hit.recipe.url, hit.recipe.image, Math.round(hit.recipe.calories), hit.recipe.ingredients.length)
+    rArray.forEach(recipe => {
+        cardTemp = new RecipeCard(recipe.title, recipe.sourceUrl, recipe.image, recipe.summary)
         recipesContainer.appendChild(cardTemp.getHtmlCard())
     })
 }
@@ -89,7 +96,6 @@ function fnLoadRecipeCard(rArray){
 
 function fnSearchRecipes(){
     let userText = inputTextSearch.value
-    if(userText.length === 0 || userText.trim() === '') return
     fnGetRandomRecipe(userText, fnSetFilterParams())
 }
 
@@ -107,18 +113,18 @@ function fnSetFilterParams(){
 
     let fromCalories = document.getElementById('from-calories').value
     let toCalories = document.getElementById('to-calories').value
-
-    if(fromCalories == '' && toCalories != ''){
-        paramsSearch += `&calories=${toCalories.value}`
-    }else if(toCalories === '' && fromCalories != ''){
-        paramsSearch += `&calories=${fromCalories}%2B`
-    }else if(toCalories !== '' && fromCalories !== ''){
+    if(fromCalories.length < 0  && toCalories.length > 0){
+        paramsSearch += `&maxCarbs=${toCalories.value}`
+    }else if(toCalories.length < 0 && fromCalories.length > 0){
+        paramsSearch += `&minCarbs=${fromCalories}+`
+    }else if(toCalories.length > 0 && fromCalories.length > 0){
         if(parseInt(fromCalories) > parseInt(toCalories)){
             let aux = fromCalories
             fromCalories = toCalories
             toCalories = aux
         }
-        paramsSearch += `&calories=${fromCalories}-${toCalories}`
+        paramsSearch += `&minCarbs=${fromCalories}+`
+        paramsSearch += `&maxCarbs=${toCalories.value}`
     }
 
     return  paramsSearch
