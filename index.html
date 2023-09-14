@@ -16,6 +16,42 @@
             <div>
                 <input id="searchText" type="text" name="recipeIngredients" placeholder="Ingrese los ingredientes que desea usar">
                 <button id='searchButton' type="button">Agregar Ingrediente</button>
+
+                  <div class="dietOptionsContainer">
+                    <label for="select-diet">Select the type of Diet:</label>
+                    <select id="select-diet">
+                        <option value="">none</option>
+                        <option value="balanced">Balanced</option>
+                        <option value="high-fiber">High Fiber</option>
+                        <option value="high-protein">High Protein</option>
+                        <option value="low-carb">Low Carb</option>
+                        <option value="low-fat">Low Fat</option>
+                        <option value="low-sodium">Low Sodium</option>
+                    </select>
+                  </div>   
+                  
+                  <div>
+                    <h4>Calories</h4>
+                    <div>
+                      <label for="from-calories">From:</label>
+                      <input type="number" id="from-calories" name="from-calories"/>
+                    </div>
+                    <div>
+                      <label for="to-calories">To:</label>
+                      <input type="number" id="to-calories" name="to-calories"/>
+                    </div> 
+                  </div>
+                  
+                  <div>
+                    <h4>Ingredients</h4>
+                    <div>
+                      <label for="quantity-ingr">Up to:</label>
+                      <input type="number" id="quantity-ingr" name="quantity-ingr"/>
+                    </div>
+                  </div>
+
+                  <button type="button" id="filter-button">Filter</button>
+
             </div>
         </nav>
     </div>
