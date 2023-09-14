@@ -2,15 +2,18 @@
 let hitList = []
 
 const btnSearch = document.getElementById('searchButton')
-btnSearch.onclick = searchRecipes
+btnSearch.onclick = fnSearchRecipes
+
+const btnFilter = document.getElementById('filter-button')
+btnFilter.onclick = fnSearchRecipes
 
 const inputTextSearch = document.getElementById('searchText')
 inputTextSearch.addEventListener('keypress', (e) => {
-    if(e.key == 'Enter')searchRecipes()
+    if(e.key == 'Enter')fnSearchRecipes()
 })
 
 window.onload = () => {
-    fnGetRandomRecipe('pizza')
+    fnGetRandomRecipe('pizza', fnSetFilterParams())
 }
 
 class RecipeCard{
@@ -46,8 +49,17 @@ class RecipeCard{
 
 }
 
-function fnGetRandomRecipe(query){    
-    let url = `https://api.edamam.com/api/recipes/v2?type=public&app_id=4b39cecb&app_key=%20edb64012675c4c34c91c6546d35f285a&q=${query}`
+function fnGetRandomRecipe(query, params){    
+
+    fnRecipesContaineRefresh()
+
+    let paramQuery = ''
+
+    if(query.length > 0){
+        paramQuery += `&q=${query}`
+    }
+    
+    let url = `https://api.edamam.com/api/recipes/v2?type=public&app_id=4b39cecb&app_key=%20edb64012675c4c34c91c6546d35f285a${paramQuery}${params}`
 
     fetch(url, {
         method: 'GET',
@@ -75,15 +87,41 @@ function fnLoadRecipeCard(rArray){
 }
 
 
-function searchRecipes(){
+function fnSearchRecipes(){
     let userText = inputTextSearch.value
     if(userText.length === 0 || userText.trim() === '') return
-    recipesContaineRefresh()
-    fnGetRandomRecipe(userText)
+    fnGetRandomRecipe(userText, fnSetFilterParams())
 }
 
-function recipesContaineRefresh(){
+function fnRecipesContaineRefresh(){
     document.getElementById('recipesContainer').innerHTML = ''
+}
+
+function fnSetFilterParams(){
+    let paramsSearch = ''
+
+    let diet = document.getElementById('select-diet').value
+    if(diet != ''){
+        paramsSearch += `&diet=${diet}`
+    }
+
+    let fromCalories = document.getElementById('from-calories').value
+    let toCalories = document.getElementById('to-calories').value
+
+    if(fromCalories == '' && toCalories != ''){
+        paramsSearch += `&calories=${toCalories.value}`
+    }else if(toCalories === '' && fromCalories != ''){
+        paramsSearch += `&calories=${fromCalories}%2B`
+    }else if(toCalories !== '' && fromCalories !== ''){
+        if(parseInt(fromCalories) > parseInt(toCalories)){
+            let aux = fromCalories
+            fromCalories = toCalories
+            toCalories = aux
+        }
+        paramsSearch += `&calories=${fromCalories}-${toCalories}`
+    }
+
+    return  paramsSearch
 }
 
 
