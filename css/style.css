@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Lobster&display=swap');
+
+img{
+    display: flex;
+    vertical-align: middle;
+}
+
+.nav_bar_tittle{
+    color: white;
+    font-size: x-large;
+    font-family: 'Indie Flower', cursive;
+    padding: 1%;
+}
+
+.nav_bar{
+    background-color: #EF9595;
+}
