@@ -1,17 +1,76 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Lobster&display=swap');
 
-img{
+.nav_bar{
+    background-color: #EF9595;
+    font-family: 'Indie Flower', cursive;
+    color: white;
     display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 2%;
+    font-size: x-large;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.link{
+    color:white;
+    text-decoration: none;
+}
+
+.logo{
+    padding: 10px;
     vertical-align: middle;
 }
 
-.nav_bar_tittle{
-    color: white;
-    font-size: x-large;
-    font-family: 'Indie Flower', cursive;
-    padding: 1%;
+.button-24 {
+    background: #EFB495;
+    border: 1px solid #EFB495;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-family: nunito,roboto,proxima-nova,"proxima nova",sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
 }
 
-.nav_bar{
-    background-color: #EF9595;
+.button-24:hover,
+.button-24:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: #FF4742;
 }
+
+.button-24:active {
+    opacity: .5;
+}
+
+.aside{
+    display: flex;
+}
+
+.side_bar{
+    position:fixed;
+    height: 80%;
+    width: 20%;
+    background-color: #EFD595;
+    padding: 2%;
+    box-shadow: EFD595 0px 0px 0px 3px;
+    border-radius: 10px;
+}
+
+
+
