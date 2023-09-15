@@ -24,21 +24,20 @@
             <!-- Sidebar -->   
             <div class="side_bar">  
                 <header class="row">
-                    <h2 class="card"> FILTROSS </h2>
+                    <h2 class="card">Search</h2>
                 </header>
                 <ul class="nav">
                     <li class="row">
-                        <input id="searchText" class="col-8" type="text" name="recipeIngredients" placeholder="Ingrese los ingredientes que desea usar">
-                        <button id='searchButton' class="button-24 col-4" type="button">Add</button>
+                        <input id="searchText" class="col-8" type="text" name="recipeIngredients" placeholder="You can search a lot of recipes">
                     </li>
                     <li class="row">
                         <div class="dietOptionsContainer ">
                             <label for="select-diet">Select the type of Diet:</label>
                             <select id="select-diet" class="col-12">
                                 <option value="">none</option>
-                                <option value="gluten free">Gluten Free</option>
+                                <option value="gluten%20free">Gluten Free</option>
                                 <option value="vegetarian">Vegetarian</option>
-                                <option value="lacto ovo vegetariann">Lacto ovo vegetarian</option>
+                                <option value="lacto%20ovo%20vegetariann">Lacto ovo vegetarian</option>
                                 <option value="vegan">Vegan</option>
                                 <option value="pescetarian">Pescetarian</option>
                                 <option value="paleo">Paleo</option>
@@ -47,7 +46,7 @@
                     </li>
                     <li class="row">
                         <div class="zmdi zmdi-widgets">
-                            <h4>Calories</h4>
+                            <h4>Calories (cal)</h4>
                             <div>
                                 <label for="from-calories">From:</label>
                                 <input type="number" id="from-calories" name="from-calories"/>
@@ -60,15 +59,22 @@
                     </li>
                     <li class="row">
                         <div class="zmdi">
-                            <h4>Ingredients</h4>
+                            <h4>Protein (gr)</h4>
                             <div>
-                                <label for="quantity-ingr">Up to:</label>
-                                <input type="number" id="quantity-ingr" name="quantity-ingr"/>
-                            </div>
+                              <label for="from-protein">From:</label>
+                              <input type="number" id="from-protein" name="from-protein"/>
+                          </div>
+                          <div>
+                              <label for="to-protein">To:</label>
+                              <input type="number" id="to-protein" name="to-protein"/>
+                          </div> 
                         </div>
                     </li>
                     <li class="row">
-                        <button type="button" id="filter-button">Filter</button>
+                      <div>
+                        <button type="button" id='searchButton'>Search</button>
+                        <button type="button" id="clear-filter">Clear</button>
+                      </div>
                     </li>
                 </ul>
             </div>
