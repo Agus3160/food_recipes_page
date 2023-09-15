@@ -4,22 +4,30 @@ let recipeList = []
 const btnSearch = document.getElementById('searchButton')
 btnSearch.onclick = fnSearchRecipes
 
-const btnFilter = document.getElementById('filter-button')
-btnFilter.onclick = fnSearchRecipes
+const selectDiet = document.getElementById('select-diet')
+
+const btnClearFilters = document.getElementById('clear-filter')
+btnClearFilters.onclick = fnClearFilterFields
 
 const inputCaloriesFrom = document.getElementById('from-calories')
 inputCaloriesFrom.onkeydown = function (e){if(e.key == '-') e.preventDefault()}
-
 const inputCaloriesTo = document.getElementById('to-calories')
 inputCaloriesTo.onkeydown = function (e){if(e.key == '-') e.preventDefault()}
+
+const inputProteinFrom = document.getElementById('from-protein')
+inputProteinFrom.onkeydown = function (e){if(e.key == '-') e.preventDefault()}
+const inputProteinTo = document.getElementById('to-protein')
+inputProteinTo.onkeydown = function (e){if(e.key == '-') e.preventDefault()}
 
 const inputTextSearch = document.getElementById('searchText')
 inputTextSearch.addEventListener('keypress', (e) => {
     if(e.key == 'Enter')fnSearchRecipes()
 })
 
+
+
 window.onload = () => {
-    fnGetRandomRecipe('pizza', fnSetFilterParams())
+    fnGetRandomRecipe('', fnSetFilterParams())
 }
 
 class RecipeCard{
@@ -54,20 +62,20 @@ class RecipeCard{
 }
 
 function fnGetRandomRecipe(query, params){    
+    
     const API_KEY = '008838f4b5fd428e9ed897a54bc64617'
+    let paramQuery = ''
+    let url
+    
     fnRecipesContaineRefresh()
 
-    let paramQuery = ''
-
-    if(query.length > 0){
+    if(query.length > 0 || params.length > 0){
         paramQuery += `&query=${query}`
+        url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}${paramQuery}${params}&addRecipeInformation=true&fillIngredients=true&number=3`
     }else{
-
+        url = `https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=3`
     }
-    
-    let url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}${paramQuery}${params}&addRecipeInformation=true&fillIngredients=true&number=3`
-    
-
+    console.log(url)
     fetch(url, {
         method: 'GET',
         headres:{
@@ -77,7 +85,11 @@ function fnGetRandomRecipe(query, params){
         res => res.json()
     ).then(
         data => {
-            recipeList = data.results
+            if(query.length > 0 || params.length > 0){
+                recipeList = data.results
+            }else{
+                recipeList = data.recipes
+            }
             fnLoadRecipeCard(recipeList)
         }
     )
@@ -103,31 +115,68 @@ function fnRecipesContaineRefresh(){
     document.getElementById('recipesContainer').innerHTML = ''
 }
 
+function fnClearFilterFields(){
+    inputCaloriesFrom.value = ''
+    inputCaloriesTo.value = ''
+    inputProteinFrom.value = ''
+    inputProteinTo.value = ''
+    inputTextSearch.value = ''
+}
+
 function fnSetFilterParams(){
     let paramsSearch = ''
 
-    let diet = document.getElementById('select-diet').value
+    let diet = selectDiet.value
     if(diet != ''){
         paramsSearch += `&diet=${diet}`
     }
 
-    let fromCalories = document.getElementById('from-calories').value
-    let toCalories = document.getElementById('to-calories').value
-    if(fromCalories.length < 0  && toCalories.length > 0){
-        paramsSearch += `&maxCarbs=${toCalories.value}`
-    }else if(toCalories.length < 0 && fromCalories.length > 0){
-        paramsSearch += `&minCarbs=${fromCalories}+`
-    }else if(toCalories.length > 0 && fromCalories.length > 0){
-        if(parseInt(fromCalories) > parseInt(toCalories)){
-            let aux = fromCalories
-            fromCalories = toCalories
-            toCalories = aux
+    let fromToCalories = fnIsValidFromToInput(inputCaloriesFrom, inputCaloriesTo)
+    if(fromToCalories.length > 0){
+        if(fromToCalories[1]===true){
+            paramsSearch += `&minCalories=${fromToCalories[0]}`
+        }else if(fromToCalories[1]===false){
+            paramsSearch += `&maxCalories=${fromToCalories[0]}`
+        }else{
+            paramsSearch += `&minCalories=${fromToCalories[0]}&maxCalories=${fromToCalories[1]}`
         }
-        paramsSearch += `&minCarbs=${fromCalories}+`
-        paramsSearch += `&maxCarbs=${toCalories.value}`
+    }
+
+    let fromToProtein = fnIsValidFromToInput(inputProteinFrom, inputProteinTo)
+    if(fromToProtein.length > 0){
+        if(fromToProtein[1]===true){
+            paramsSearch += `&minProtein=${fromToProtein[0]}`
+        }else if(fromToProtein[1]===false){
+            paramsSearch += `&maxProtein=${fromToProtein[0]}`
+        }else{
+            paramsSearch += `&minProtein=${fromToProtein[0]}&maxProtein=${fromToProtein[1]}`
+        }
     }
 
     return  paramsSearch
 }
 
+function fnIsValidFromToInput(fromElement, toElement){
+    let results = []
+    
+    let fromElementValue  = fromElement.value
+    let toElementValue = toElement.value
 
+    if (fromElementValue.length === 0 && toElementValue.length === 0) return results
+
+    if(fromElementValue.length === 0  && toElementValue.length > 0){
+        results = [toElementValue, false]
+    }else if(toElementValue.length === 0 && fromElementValue.length > 0){
+        results = [fromElementValue, true]
+    }else if(toElementValue.length > 0 && fromElementValue.length > 0){
+        if(parseInt(fromElementValue) > parseInt(toElementValue)){
+            let aux = fromCaloriesValue
+            fromElementValue  = toElementValue
+            toElementValue = aux
+            fromElement.value = fromElementValue 
+            toElement.value = toElementValue
+        }
+        results = [...[fromElementValue, toElementValue]]
+    }
+    return results
+}
