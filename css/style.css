@@ -1,15 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Lobster&display=swap');
 
 .nav_bar{
-    background-color: #EF9595;
+    background: linear-gradient(90deg, #fff 20%, #ef959583 60%);
     font-family: 'Indie Flower', cursive;
     color: white;
     display: flex;
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    top: 0;
     flex-direction: row;
     align-items: center;
     margin-bottom: 2%;
     font-size: x-large;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.presentacion{
+    height: 500px;
+    background: center / cover no-repeat url("/resources/img/pattern-elements-made-with-pieces-food.jpg");
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Noto Serif JP', serif;
+    align-items: center;
+}
+
+.filtro{
+    background-color: #EFD595;
 }
 
 .link{
@@ -20,6 +38,7 @@
 .logo{
     padding: 10px;
     vertical-align: middle;
+    color:#EF9595;
 }
 
 .button-24 {
