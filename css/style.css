@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nabla&display=swap');
 
 .nav_bar{
     background: linear-gradient(90deg, #fff 20%, #ef959583 60%);
@@ -17,7 +18,7 @@
 }
 
 .presentacion{
-    height: 500px;
+    height: auto;
     background: center / cover no-repeat url("/resources/img/pattern-elements-made-with-pieces-food.jpg");
     display: flex;
     flex-direction: column;
@@ -26,8 +27,21 @@
     align-items: center;
 }
 
+.presentation_text{
+    display: flex;
+    flex-direction: column;
+    justify-content:end;
+    align-items: center;
+    height: 200px;
+    font-family: 'Nabla', cursive;
+    color:black;    
+}
+
 .filtro{
     background-color: #EFD595;
+    width: 80%;
+    margin: 2%;
+    padding: 2%;
 }
 
 .link{
