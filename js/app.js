@@ -66,7 +66,7 @@ class RecipeCard{
 
 function fnGetRandomRecipe(query, params){    
     
-    const API_KEY = '008838f4b5fd428e9ed897a54bc64617'
+    const API_KEY = 'b2a68d559e0b40c3864ab3f101ff2d33'
     let paramQuery = ''
     let url
     
