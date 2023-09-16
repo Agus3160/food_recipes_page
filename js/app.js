@@ -42,7 +42,7 @@ class RecipeCard{
         let recipeA = document.createElement('a')
         recipeA.setAttribute('href', this.url)
         recipeA.setAttribute('class', 'col-sm-10 col-md-5 col-lg-3 col-xl-3 m-3')
-        recipeA.setAttribute('style', 'height: 500px; border:');
+        recipeA.setAttribute('style', 'height: 500px; text-decoration:none;');
 
         let recipeDiv = document.createElement('div')
         recipeDiv.setAttribute('class', 'card div_card shadow_box')
@@ -52,7 +52,7 @@ class RecipeCard{
             `<img src='${this.image}' class="card-img-top"/>            
             <div class='card-body'>
                 <h2 class="card-title">${this.title}</h2>
-                <p class='card-text'>${this.summary.replace(/<\/?[^>]+(>|$)/g, "")}</p>
+                <p class='card-text fw-lighter'>${this.summary.replace(/<\/?[^>]+(>|$)/g, "")}</p>
             </div>`
         )
 
