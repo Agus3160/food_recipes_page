@@ -41,17 +41,18 @@ class RecipeCard{
     getHtmlCard(){
         let recipeA = document.createElement('a')
         recipeA.setAttribute('href', this.url)
-        recipeA.setAttribute('class', 'card col-sm-10 col-md-5 col-lg-3 col-xl-3 m-3')
-        recipeA.setAttribute('style', 'height: 500px');
+        recipeA.setAttribute('class', 'col-sm-10 col-md-5 col-lg-3 col-xl-3 m-3')
+        recipeA.setAttribute('style', 'height: 500px; border:');
 
         let recipeDiv = document.createElement('div')
-        recipeDiv.setAttribute('class', 'overflow-auto')
+        recipeDiv.setAttribute('class', 'card div_card shadow_box')
+        recipeDiv.setAttribute('style', 'height: 500px');
 
         let component = (
             `<img src='${this.image}' class="card-img-top"/>            
-            <div class='card-body overflow-auto'>
+            <div class='card-body'>
                 <h2 class="card-title">${this.title}</h2>
-                <p class='card-text overflow-auto'>${this.summary.replace(/<\/?[^>]+(>|$)/g, "")}</p>
+                <p class='card-text'>${this.summary.replace(/<\/?[^>]+(>|$)/g, "")}</p>
             </div>`
         )
 

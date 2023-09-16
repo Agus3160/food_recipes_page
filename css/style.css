@@ -78,7 +78,18 @@ input{
     color:#EF9595;
 }
 
-.overflow-ellipsis {
+.card{
+    box-shadow: 0px, 1px, 10px, rgba(0,0,0,0.2);
+    transition: all 400ms ease;
+}
+
+.card:hover{
+    box-shadow: 5px 5px 20px rgba(0,0,0,0.4);
+    transform: translateY(-3%);
+}
+
+.card-text, .card-body, .div_card, .card{
+    overflow: hidden;
     text-overflow: ellipsis;
 }
 
@@ -111,6 +122,10 @@ input{
     width: 40%;
 }
 
+.shadow_box{
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
 .button_section{
     display: flex;
     justify-content: end;
@@ -125,22 +140,6 @@ input{
 
 .button-24:active {
     opacity: .5;
-}
-
-.aside{
-    display: flex;
-}
-
-.side_bar{
-    display: flex;
-    flex-direction: column;
-    position:fixed;
-    height: 80%;
-    width: 20%;
-    background-color: #EFD595;
-    padding: 2%;
-    box-shadow: EFD595 0px 0px 0px 3px;
-    border-radius: 10px;
 }
 
 @media screen and (max-width: 734px){ 
