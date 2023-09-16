@@ -174,7 +174,7 @@ function fnIsValidFromToInput(fromElement, toElement){
         results = [fromElementValue, true]
     }else if(toElementValue.length > 0 && fromElementValue.length > 0){
         if(parseInt(fromElementValue) > parseInt(toElementValue)){
-            let aux = fromCaloriesValue
+            let aux = fromElementValue
             fromElementValue  = toElementValue
             toElementValue = aux
             fromElement.value = fromElementValue 
