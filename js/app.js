@@ -102,10 +102,16 @@ function fnLoadRecipeCard(rArray){
     let cardTemp = {}
     let recipesContainer = document.getElementById('recipesContainer')
 
-    rArray.forEach(recipe => {
-        cardTemp = new RecipeCard(recipe.title, recipe.sourceUrl, recipe.image, recipe.summary)
-        recipesContainer.appendChild(cardTemp.getHtmlCard())
-    })
+    if(rArray.length > 0){
+        rArray.forEach(recipe => {
+            cardTemp = new RecipeCard(recipe.title, recipe.sourceUrl, recipe.image, recipe.summary)
+            recipesContainer.appendChild(cardTemp.getHtmlCard())
+        })
+    }else{
+        let h2TextNotFound = document.createElement('h2')
+        h2TextNotFound.textContent = "No results found"
+        recipesContainer.appendChild(h2TextNotFound)
+    }
 }
 
 
