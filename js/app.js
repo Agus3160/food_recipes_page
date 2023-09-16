@@ -74,9 +74,9 @@ function fnGetRandomRecipe(query, params){
 
     if(query.length > 0 || params.length > 0){
         paramQuery += `&query=${query}`
-        url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}${paramQuery}${params}&addRecipeInformation=true&fillIngredients=true&number=3`
+        url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}${paramQuery}${params}&addRecipeInformation=true&fillIngredients=true&number=9`
     }else{
-        url = `https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=3`
+        url = `https://api.spoonacular.com/recipes/random?apiKey=${API_KEY}&number=9`
     }
     console.log(url)
     fetch(url, {
@@ -124,6 +124,7 @@ function fnClearFilterFields(){
     inputProteinFrom.value = ''
     inputProteinTo.value = ''
     inputTextSearch.value = ''
+    selectDiet.value = ""
 }
 
 function fnSetFilterParams(){
