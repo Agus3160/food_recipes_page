@@ -6,6 +6,10 @@ input{
     width: 90%;
 }
 
+body{
+    background-color: #B5C99A;
+}
+
 .nav_bar{
     background: linear-gradient(90deg, #fff 20%, #b5c99aa9 60%);
     font-family: 'Indie Flower', cursive;
