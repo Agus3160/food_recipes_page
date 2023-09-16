@@ -25,7 +25,7 @@ input{
 
 .presentacion{
     height: auto;
-    background: center / cover no-repeat url("/resources/img/pattern-elements-made-with-pieces-food.jpg");
+    background: center / cover no-repeat url("/resources/img/pattern-elements-made-with-pieces-food.png");
     display: flex;
     flex-direction: column;
     justify-content: center;
