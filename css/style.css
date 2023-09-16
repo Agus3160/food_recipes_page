@@ -78,6 +78,10 @@ input{
     color:#EF9595;
 }
 
+.overflow-ellipsis {
+    text-overflow: ellipsis;
+}
+
 .button-24 {
     background: #EFB495;
     border: 1px solid #EFB495;

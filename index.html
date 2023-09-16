@@ -26,9 +26,10 @@
             </div>            
             <div class="filter rounded">
                 <div class="inputs row">
-                    <form action="submit" class="row">
+                    <form action="submit" class="">
                         <div class="row justify-content-between">
-                            <div class="filter_section col-lg-2 col-sm-10 col-md-5 m-3 p-3">
+                            <div class="filter_section col-lg-3 col-sm-10 col-md-5 col-xl-3 m-3 p-3">
+                                <label class=""><p>Ingredients/Type:</p></label>
                                 <div class="my-3">
                                     <label for="searchText" class="py-2">Search:</label><br>
                                     <input id="searchText" class="form-control" type="text" name="recipeIngredients" placeholder="Search recipe">
@@ -46,8 +47,8 @@
                                     </select>
                                 </div>
                             </div>                            
-                            <div class="filter_section col-lg-2 col-sm-10 col-md-5 m-3 p-3">
-                                <label for="select-diet" class="py-2">Calories (cal)</label>
+                            <div class="filter_section col-lg-3 col-sm-10 col-md-5 col-xl-3 m-3 p-3">
+                                <label for="select-diet" class="py-2"><p>Calories (cal):</p></label>
                                 <div>
                                     <label for="from-calories" class="py-2">From:</label>
                                     <input type="number" class="form-control" id="from-calories" name="from-calories"/>
@@ -57,8 +58,8 @@
                                     <input type="number" class="form-control" id="to-calories" name="to-calories"/>
                                 </div> 
                             </div>                           
-                            <div class="filter_section col-lg-2 col-sm-10 col-md-5 m-3 p-3">
-                                <label>Protein (gr)</label>
+                            <div class="filter_section col-sm-8 col-md-5 col-lg-3 col-xl-3 m-3 p-3">
+                                <label><p>Protein (gr):</p></label>
                                 <div>
                                     <label for="from-protein" class="py-2">From:</label>
                                     <input type="number" class="form-control" id="from-protein" name="from-protein"/>
@@ -78,7 +79,7 @@
     </header>
 
     <div class="row container-fluid" style="background-image: url('resources/img/img.jpg');">
-        <div id="recipesContainer" class="recetas col-10">
+        <div id="recipesContainer" class="row justify-content-between">
         </div>   
     </div>  
     
