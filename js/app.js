@@ -43,13 +43,13 @@ class RecipeCard{
         recipeA.setAttribute('href', this.url)
 
         let recipeDiv = document.createElement('div')
-        recipeDiv.setAttribute('class', 'recipeCardContainer')
+        recipeDiv.setAttribute('class', 'card col-sm-10 col-md-5 col-lg-3')
 
         let component = (
-            `<img src='${this.image}' class="recipeImg"/>
-            <h2 class="tituloReceta">${this.title}</h2>
-            <div class='recipeSummary'>
-                <p class='recipeCalories'>${this.summary.replace(/<\/?[^>]+(>|$)/g, "")}</p>
+            `<img src='${this.image}' class="card-img-top"/>            
+            <div class='card-body'>
+                <h2 class="card-title">${this.title}</h2>
+                <p class='card-text'>${this.summary.replace(/<\/?[^>]+(>|$)/g, "")}</p>
             </div>`
         )
 

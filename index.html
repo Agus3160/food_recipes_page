@@ -24,68 +24,62 @@
                 <h1 class="">Food Recipes</h1>
                 <p>In this page you can search and discover new recipes</p>
             </div>            
-            <div class="filtro rounded">
-                <div class="row">
-                    <h2 class=""> Filter</h2>
-                    <p>Choose ingredients, type of diet, calories, etc.</p>
+            <div class="filter rounded">
+                <div class="inputs row">
                     <form action="submit" class="row">
                         <div class="row justify-content-between">
-                            <div class="col-2 card">
-                                <label for="searchText">Search:</label>
-                                <input id="searchText" class="col-8" type="text" name="recipeIngredients" placeholder="Search recipe">
-                            </div>
-                            <div class="col-2 card dietOptionsContainer ">
-                                <label for="select-diet">Select the type of Diet:</label>
-                                <select id="select-diet" class="col-12">
-                                    <option value="">none</option>
-                                    <option value="gluten%20free">Gluten Free</option>
-                                    <option value="vegetarian">Vegetarian</option>
-                                    <option value="lacto%20ovo%20vegetariann">Lacto ovo vegetarian</option>
-                                    <option value="vegan">Vegan</option>
-                                    <option value="pescetarian">Pescetarian</option>
-                                    <option value="paleo">Paleo</option>
-                                </select>
-                            </div>
-                            <div class="col-2 card">
-                                <label for="select-diet">Calories (cal)</label>
+                            <div class="filter_section col-lg-2 col-sm-10 col-md-5 m-3 p-3">
+                                <div class="my-3">
+                                    <label for="searchText" class="py-2">Search:</label><br>
+                                    <input id="searchText" class="form-control" type="text" name="recipeIngredients" placeholder="Search recipe">
+                                </div>
+                                <div class="my-3 dietOptionsContainer ">
+                                    <label for="select-diet" class="py-2">Select the type of Diet:</label><br>
+                                    <select id="select-diet" class="form-control">
+                                        <option value="">none</option>
+                                        <option value="gluten%20free">Gluten Free</option>
+                                        <option value="vegetarian">Vegetarian</option>
+                                        <option value="lacto%20ovo%20vegetariann">Lacto ovo vegetarian</option>
+                                        <option value="vegan">Vegan</option>
+                                        <option value="pescetarian">Pescetarian</option>
+                                        <option value="paleo">Paleo</option>
+                                    </select>
+                                </div>
+                            </div>                            
+                            <div class="filter_section col-lg-2 col-sm-10 col-md-5 m-3 p-3">
+                                <label for="select-diet" class="py-2">Calories (cal)</label>
                                 <div>
-                                    <label for="from-calories">From:</label>
-                                    <input type="number" id="from-calories" name="from-calories"/>
+                                    <label for="from-calories" class="py-2">From:</label>
+                                    <input type="number" class="form-control" id="from-calories" name="from-calories"/>
                                 </div>
                                 <div>
-                                    <label for="to-calories">To:</label>
-                                    <input type="number" id="to-calories" name="to-calories"/>
+                                    <label for="to-calories" class="py-2">To:</label>
+                                    <input type="number" class="form-control" id="to-calories" name="to-calories"/>
                                 </div> 
                             </div>                           
-                            <div class="col-2 card">
-                                <h4>Protein (gr)</h4>
+                            <div class="filter_section col-lg-2 col-sm-10 col-md-5 m-3 p-3">
+                                <label>Protein (gr)</label>
                                 <div>
-                                    <label for="from-protein">From:</label>
-                                    <input type="number" id="from-protein" name="from-protein"/>
+                                    <label for="from-protein" class="py-2">From:</label>
+                                    <input type="number" class="form-control" id="from-protein" name="from-protein"/>
                                 </div>
                                 <div>
-                                    <label for="to-protein">To:</label>
-                                    <input type="number" id="to-protein" name="to-protein"/>
+                                    <label for="to-protein" class="py-2">To:</label>
+                                    <input type="number" class="form-control" id="to-protein" name="to-protein"/>
                                 </div> 
                             </div>
-                        </div>                        
-                        <div class="row justify-content-end">
-                            <button type="button" id='searchButton' class="button-24 col-1 m-2">Search</button>
-                            <button type="button" id="clear-filter" class="button-24 col-1 m-2">Clear</button>
-                        </div>
+                        </div>  
+                        <button type="button" id='searchButton' class="button-24 col-lg-2 col-sm-3 col-md-4 m-2">Search</button>
+                        <button type="button" id="clear-filter" class="button-24 col-lg-2 col-sm-3 col-md-4 m-2">Clear</button> 
                     </form>
                 </div>
             </div>
         </div>        
     </header>
 
-    <div class="recipesContainer row d-flex justify-content-between">        
-
-        <!--
+    <div class="row container-fluid" style="background-image: url('resources/img/img.jpg');">
         <div id="recipesContainer" class="recetas col-10">
-        </div>
-        -->
-        
+        </div>   
     </div>  
     
     <script src="./js/app.js"></script>

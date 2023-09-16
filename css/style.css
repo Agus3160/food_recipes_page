@@ -2,6 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Capriola&display=swap');
 
+input{
+    width: 90%;
+}
+
 .nav_bar{
     background: linear-gradient(90deg, #fff 20%, #efb49596 60%);
     font-family: 'Indie Flower', cursive;
@@ -33,7 +37,7 @@
     flex-direction: column;
     justify-content:end;
     align-items: center;
-    height: 250px;
+    height: 300px;
     color:white;   
     text-shadow: -1px 0 black, 0 1px black,
     1px 0 black, 0 -1px black
@@ -42,29 +46,25 @@
 .presentation_text h1{    
     font-family: 'Cabin Sketch', cursive; 
     font-size: 60px;
-    text-shadow: -1px 0 black, 0 1px black,
-    1px 0 black, 0 -1px black
 }
 
 .presentation_text p{
     font-family: 'Capriola', sans-serif;
     font-size: 30px;
+    padding: 2%;
+    text-align: center;
 }
 
-.filtro{
+.filter{
     background-color: #EFD595;
     width: 80%;
     margin: 2%;
     padding: 2%;
 }
 
-.recipesContainer{
-    background: center / cover no-repeat url("/resources/img/img.png");
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    font-family: 'Noto Serif JP', serif;
-    align-items: center;
+.inputs{
+    font-family: 'Capriola', sans-serif;
+    color:#EF9595;  
 }
 
 .link{
@@ -103,6 +103,15 @@
     vertical-align: middle;
 }
 
+.filter_section{
+    width: 40%;
+}
+
+.button_section{
+    display: flex;
+    justify-content: end;
+}
+
 .button-24:hover,
 .button-24:active {
     background-color: initial;
@@ -130,5 +139,11 @@
     border-radius: 10px;
 }
 
+@media screen and (max-width: 734px){ 
+    .button_section{
+        display: flex;
+        justify-content: center;
+    }
+}
 
 
