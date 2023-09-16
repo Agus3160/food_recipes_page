@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="/resources/img/comida.ico">
     <title>Food Recipes</title>
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -20,75 +21,71 @@
         </nav> 
         <div class="presentacion">
             <div class="presentation_text">
-                <h1 class="my-4 p-2 font-size-large">Food Recipes</h1>
+                <h1 class="">Food Recipes</h1>
                 <p>In this page you can search and discover new recipes</p>
             </div>            
             <div class="filtro rounded">
-                <header class="row">
+                <div class="row">
                     <h2 class=""> Filter</h2>
                     <p>Choose ingredients, type of diet, calories, etc.</p>
-                    <form action="">
-                        <ul class="nav">
-                            <li class="row">
-                                <input id="searchText" class="col-8" type="text" name="recipeIngredients" placeholder="You can search a lot of recipes">
-                            </li>
-                            <li class="row">
-                                <div class="dietOptionsContainer ">
-                                    <label for="select-diet">Select the type of Diet:</label>
-                                    <select id="select-diet" class="col-12">
-                                        <option value="">none</option>
-                                        <option value="gluten%20free">Gluten Free</option>
-                                        <option value="vegetarian">Vegetarian</option>
-                                        <option value="lacto%20ovo%20vegetariann">Lacto ovo vegetarian</option>
-                                        <option value="vegan">Vegan</option>
-                                        <option value="pescetarian">Pescetarian</option>
-                                        <option value="paleo">Paleo</option>
-                                    </select>
-                                </div> 
-                            </li>
-                            <li class="row">
-                                <div class="zmdi zmdi-widgets">
-                                    <h4>Calories (cal)</h4>
-                                    <div>
-                                        <label for="from-calories">From:</label>
-                                        <input type="number" id="from-calories" name="from-calories"/>
-                                    </div>
-                                    <div>
-                                        <label for="to-calories">To:</label>
-                                        <input type="number" id="to-calories" name="to-calories"/>
-                                    </div> 
-                                </div>
-                            </li>
-                            <li class="row">
-                                <div class="zmdi">
-                                    <h4>Protein (gr)</h4>
-                                    <div>
-                                        <label for="from-protein">From:</label>
-                                        <input type="number" id="from-protein" name="from-protein"/>
-                                    </div>
-                                    <div>
-                                        <label for="to-protein">To:</label>
-                                        <input type="number" id="to-protein" name="to-protein"/>
-                                    </div> 
-                                </div>
-                            </li>
-                            <li class="row">
+                    <form action="submit" class="row">
+                        <div class="row justify-content-between">
+                            <div class="col-2 card">
+                                <label for="searchText">Search:</label>
+                                <input id="searchText" class="col-8" type="text" name="recipeIngredients" placeholder="Search recipe">
+                            </div>
+                            <div class="col-2 card dietOptionsContainer ">
+                                <label for="select-diet">Select the type of Diet:</label>
+                                <select id="select-diet" class="col-12">
+                                    <option value="">none</option>
+                                    <option value="gluten%20free">Gluten Free</option>
+                                    <option value="vegetarian">Vegetarian</option>
+                                    <option value="lacto%20ovo%20vegetariann">Lacto ovo vegetarian</option>
+                                    <option value="vegan">Vegan</option>
+                                    <option value="pescetarian">Pescetarian</option>
+                                    <option value="paleo">Paleo</option>
+                                </select>
+                            </div>
+                            <div class="col-2 card">
+                                <label for="select-diet">Calories (cal)</label>
                                 <div>
-                                    <button type="button" id='searchButton'>Search</button>
-                                    <button type="button" id="clear-filter">Clear</button>
+                                    <label for="from-calories">From:</label>
+                                    <input type="number" id="from-calories" name="from-calories"/>
                                 </div>
-                            </li>
-                        </ul>
+                                <div>
+                                    <label for="to-calories">To:</label>
+                                    <input type="number" id="to-calories" name="to-calories"/>
+                                </div> 
+                            </div>                           
+                            <div class="col-2 card">
+                                <h4>Protein (gr)</h4>
+                                <div>
+                                    <label for="from-protein">From:</label>
+                                    <input type="number" id="from-protein" name="from-protein"/>
+                                </div>
+                                <div>
+                                    <label for="to-protein">To:</label>
+                                    <input type="number" id="to-protein" name="to-protein"/>
+                                </div> 
+                            </div>
+                        </div>                        
+                        <div class="row justify-content-end">
+                            <button type="button" id='searchButton' class="button-24 col-1 m-2">Search</button>
+                            <button type="button" id="clear-filter" class="button-24 col-1 m-2">Clear</button>
+                        </div>
                     </form>
-                </header>
+                </div>
             </div>
         </div>        
     </header>
 
-    <div class="row d-flex justify-content-between">        
+    <div class="recipesContainer row d-flex justify-content-between">        
 
+        <!--
         <div id="recipesContainer" class="recetas col-10">
         </div>
+        -->
+        
     </div>  
     
     <script src="./js/app.js"></script>
