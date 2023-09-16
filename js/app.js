@@ -124,6 +124,7 @@ function fnClearFilterFields(){
     inputProteinFrom.value = ''
     inputProteinTo.value = ''
     inputTextSearch.value = ''
+    selectDiet.value = ""
 }
 
 function fnSetFilterParams(){
